@@ -5,4 +5,5 @@ Para que la Raspberry Zero se vuelva transmisora de video:
 (Tiene delay de 3 a 5 seg)
 2) https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
 Puede requerir "sudo apt-get install php7.1" o alguna versión más reciente
+(Solución de error "mmal: mmal_vc_component_enable: failed to enable component: ENOSPC" -> "sudo pkill raspimjpeg")
 
