@@ -1,4 +1,5 @@
 # Carrito3D
+##Ir a /lib/systemd/system/nodered.service para editar el max-old-space
 
 Para que la Raspberry Zero se vuelva transmisora de video:
 1) https://chriscarey.com/blog/2017/04/30/achieving-high-frame-rate-with-a-raspberry-pi-camera-system/
