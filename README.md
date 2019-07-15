@@ -9,3 +9,4 @@ Puede requerir actualizar o instalar php como aquí: http://www.heidislab.com/tu
 Recuerda que al habilitar la cámara necesitas reiniciar la rasp.
 (Solución de error "mmal: mmal_vc_component_enable: failed to enable component: ENOSPC" -> "sudo pkill raspimjpeg")
 
+Para que funcionaran los servos de manera correcta se utilizaron los nodos de aquí https://flows.nodered.org/node/node-red-node-pi-gpiod, tomar en cuenta que tienes que modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" antes del último "exit 0". Esto trae unas vulnerabilidades que se pueden atender según el mismo enlace.
