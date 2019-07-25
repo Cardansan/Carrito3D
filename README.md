@@ -1,4 +1,4 @@
-# Carrito3D
+# Carrito3D v2
 ##Ir a /lib/systemd/system/nodered.service para editar el max-old-space
 
 Para que la Raspberry Zero se vuelva transmisora de video:
