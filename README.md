@@ -21,7 +21,7 @@ Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la 
 
 Por la duración de las descargas e instalaciones, dura aproximadamente entre una y dos horas el proceso completo.
 
-### Notas
+## Notas
 Otra forma para que la Raspberry Zero se vuelva transmisora de video:
 1) https://chriscarey.com/blog/2017/04/30/achieving-high-frame-rate-with-a-raspberry-pi-camera-system/
 (Tiene delay de 3 a 5 seg)
