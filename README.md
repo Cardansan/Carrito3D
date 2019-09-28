@@ -11,7 +11,7 @@ Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitar
 
 Instalar RPi-Cam-Web-Interface tal como se menciona en la página: https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
 ### 5) Configuración previa para el control de servos.
-Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0".
+Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry.
 ### 6) Importar los flujos.
 Desde Node-RED importar los flujos hallados en este repositorio. 
 ### 7) Instalar los nodos faltantes.
