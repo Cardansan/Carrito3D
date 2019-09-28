@@ -3,7 +3,7 @@
 ### 1) Instalar Node-RED.
 Descargar la última versión de Node-RED para la imagen de Raspbian que usará la raspberry. Habilitar el servicio para que Node-RED corra en cada encendido.
 ### 2) Liberar el mayor espacio posible para ejecutar Node-RED.
-Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cantidad razonable. Se ha probado con 1024 exitosamente.
+Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cantidad razonable. Se ha probado con 1024 exitosamente. Detener y volver a correr Node-RED.
 ### 3) Habilitar la conexión a la cámara de la raspberry.
 Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitarás reiniciar la rasp.
 ### 4) Activar la transmisión y recolección de video via web.
