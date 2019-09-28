@@ -3,11 +3,11 @@
 ### 1) Instalar Node-RED.
 Descargar la última versión de Node-RED para la imagen de Raspbian que usará la raspberry. Habilitar el servicio para que Node-RED corra en cada encendido.
 ### 2) Liberar el mayor espacio posible para ejecutar Node-RED.
-Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cantidad razonable. Se ha probado con 1024 exitosamente.
+Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cantidad razonable. Se ha probado con 1024 exitosamente. Detener, ejecutar "sudo systemctl daemon-reload" y volver a correr Node-RED.
 ### 3) Habilitar la conexión a la cámara de la raspberry.
 Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitarás reiniciar la rasp.
 ### 4) Activar la transmisión y recolección de video via web.
-[Probablemente se necesite actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w (usar al menos la versión 7.3)]
+[Probablemente se necesite actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w  o como se describe en el archivo Php_Install_Instructions hallado en este repo. (usar al menos la versión 7.3)]
 
 Instalar RPi-Cam-Web-Interface tal como se menciona en la página: https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
 ### 5) Configuración previa para el control de servos.
