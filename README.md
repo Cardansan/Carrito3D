@@ -5,13 +5,15 @@ Descargar la última versión de Node-RED para la imagen de Raspbian que usará 
 ### 2) Liberar el mayor espacio posible para ejecutar Node-RED.
 Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cantidad razonable. Se ha probado con 1024 exitosamente. Detener, ejecutar "sudo systemctl daemon-reload" y volver a correr Node-RED.
 ### 3) Habilitar la conexión a la cámara de la raspberry.
-Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitarás reiniciar la rasp.
-### 4) Activar la transmisión y recolección de video via web.
-[Probablemente se necesite actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w  o como se describe en el archivo Php_Install_Instructions hallado en este repo. (usar al menos la versión 7.3)]
+Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitarás reiniciar la rasp (siguiente paso).
+### 4) Configuración previa para el control de servos.
+Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry.
+
+### 5) Activar la transmisión y recolección de video via web.
+[Probablemente se necesite actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w  o como se describe en el archivo Php_Install_Instructions hallado en este repo. (usar al menos la versión 7.3) Si se pausa el último comando y quedan dos puntos ":" oprimir "q" para continuar.]
 
 Instalar RPi-Cam-Web-Interface tal como se menciona en la página: https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
-### 5) Configuración previa para el control de servos.
-Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0".
+
 ### 6) Importar los flujos.
 Desde Node-RED importar los flujos hallados en este repositorio. 
 ### 7) Instalar los nodos faltantes.
