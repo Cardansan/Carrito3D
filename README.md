@@ -14,6 +14,11 @@ Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al f
 
 Instalar RPi-Cam-Web-Interface tal como se menciona en la página: https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
 
+git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
+
+cd RPi_Cam_Web_Interface
+
+./install.sh
 ### 6) Importar los flujos.
 Desde Node-RED importar los flujos hallados en este repositorio. 
 ### 7) Instalar los nodos faltantes.
