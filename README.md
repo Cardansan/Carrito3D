@@ -1,5 +1,4 @@
-# VAPRPi-RED
-# Repositorio de flujos de Node-RED
+# Repositorio de flujos de Node-RED para VAPRPi-RED
 ## Pasos para la instalación del software
 ### 1) Instalar Node-RED.
 Descargar la última versión de Node-RED para la imagen de Raspbian que usará la raspberry. Habilitar el servicio para que Node-RED corra en cada encendido.
