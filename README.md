@@ -32,5 +32,5 @@ Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la 
 - Por la duración de las descargas e instalaciones, dura aproximadamente entre una y dos horas el proceso completo.
 - Otra forma para que la Raspberry Zero se vuelva transmisora de video: https://chriscarey.com/blog/2017/04/30/achieving-high-frame-rate-with-a-raspberry-pi-camera-system/
 (Tiene delay de 3 a 5 seg)
-- Se presentó una vez el error "mmal: mmal_vc_component_enable: failed to enable component: ENOSPC" solucionado con el comando "sudo pkill raspimjpeg".
-- Para que funcionaran los servos de manera correcta se utilizaron los nodos de aquí https://flows.nodered.org/node/node-red-node-pi-gpiod, tomar en cuenta que tienes que modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" antes del último "exit 0". Esto trae unas vulnerabilidades que se pueden atender según el mismo enlace. Se encontró que los servos funcionaron mejor con valores de 0-20.
+- Se presentó varias veces el error "mmal: mmal_vc_component_enable: failed to enable component: ENOSPC" solucionado con el comando "sudo pkill raspimjpeg".
+- Para que funcionaran los servos de manera correcta se utilizaron los nodos de aquí https://flows.nodered.org/node/node-red-node-pi-gpiod, tomar en cuenta que tienes que modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" antes del último "exit 0". Esto trae unas vulnerabilidades (puerto TCP 8888) que se pueden atender según el mismo enlace.
