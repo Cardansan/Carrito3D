@@ -36,6 +36,6 @@ Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la 
 - Para que funcionaran los servos de manera correcta se utilizaron los nodos de aquí https://flows.nodered.org/node/node-red-node-pi-gpiod, tomar en cuenta que tienes que modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" antes del último "exit 0". Esto trae unas vulnerabilidades (puerto TCP 8888) que se pueden atender según el mismo enlace.
 
 ## Enlaces relacionados
-- Raspberry Pi Zero en modo OTG (para SSH): https://gist.github.com/gbaman/975e2db164b3ca2b51ae11e45e8fd40a
+- Raspberry Pi Zero en modo OTG (para SSH): https://caron.ws/diy-cartes-microcontroleurs/raspberrypi/pi-zero-otg-ethernet/
 - Captive Portals en Raspberry Pi: https://pimylifeup.com/raspberry-pi-captive-portal/
 - Access Point y Managed Mode Wifi en RPi: https://blog.thewalr.us/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/
