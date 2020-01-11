@@ -7,7 +7,8 @@ Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cant
 ### 3) Habilitar la conexión a la cámara de la raspberry.
 Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitarás reiniciar la rasp (siguiente paso).
 ### 4) Configuración previa para el control de servos.
-Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry.
+Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry. 
+EDIT: Aparentemente ahora se requiere hacer esto: https://github.com/guymcswain/pigpio-client/wiki/Install-and-configure-pigpiod
 
 ### 5) Activar la transmisión y recolección de video via web.
 [Probablemente se necesite actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w  o como se describe en el archivo Php_Install_Instructions hallado en este repo. (usar al menos la versión 7.3) Si se pausa el último comando y quedan dos puntos ":" oprimir "q" para continuar.]
