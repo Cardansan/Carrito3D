@@ -27,6 +27,6 @@ Installation Steps
  > sudo apt-get remove '^php.*'
   
 -Step 4: Install PHP 7.1
-  sudo apt-get install php7.3
+ > sudo apt-get install php7.3
   
 And that’s all. 
