@@ -9,24 +9,24 @@ Installation Steps
 
   Edit the file /etc/apt/sources.list with your text editor of choice:
   
-  sudo nano /etc/apt/sources.list
+  > sudo nano /etc/apt/sources.list
   
   Now change the source repo from “stretch” to “buster”. The line should look similar to this:
-  deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+  > deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
   
   Save and close the file.
 
 -Step 2: Update the System
   Since this is a different package repository (with newer versions of software you’re currently using), it’s important to perform a       full   system update afterwards, due to compatibility. Run the following (first it will update the packages list, and then upgrade the   system)
   
-  sudo apt-get update && sudo apt-get upgrade
+ > sudo apt-get update && sudo apt-get upgrade
 
 -Step 3: Remove any previous PHP versions
   If you had PHP installed before, which was my case, it’s a good idea to remove any old packages beforehand:
   
-  sudo apt-get remove '^php.*'
+ > sudo apt-get remove '^php.*'
   
 -Step 4: Install PHP 7.1
-  sudo apt-get install php7.1
+  sudo apt-get install php7.3
   
 And that’s all. 
