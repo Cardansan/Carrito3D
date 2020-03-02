@@ -19,6 +19,8 @@ git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
 
 cd RPi_Cam_Web_Interface
 
+Nota: Borrar el "html" de la configuración al instalar.
+
 ./install.sh
 ### 6) Importar los flujos.
 Desde Node-RED importar los flujos hallados en este repositorio. 
