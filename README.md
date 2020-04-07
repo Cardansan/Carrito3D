@@ -42,4 +42,5 @@ Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la 
 - Raspberry Pi Zero en modo OTG (para SSH): https://caron.ws/diy-cartes-microcontroleurs/raspberrypi/pi-zero-otg-ethernet/
 - Captive Portals en Raspberry Pi: https://pimylifeup.com/raspberry-pi-captive-portal/
 - Access Point y Managed Mode Wifi en RPi: https://blog.thewalr.us/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/
+- Script AP: https://github.com/lukicdarkoo/rpi-wifi
 - Install and configure Pigpiod: https://github.com/guymcswain/pigpio-client/wiki/Install-and-configure-pigpiod
