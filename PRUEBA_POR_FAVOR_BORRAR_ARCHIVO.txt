@@ -1,2 +1,0 @@
-borrar archivo
-solo se usó para ver si podía hacer push
