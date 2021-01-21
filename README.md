@@ -7,7 +7,8 @@ Ir a /lib/systemd/system/nodered.service para editar el max-old-space a una cant
 ### 3) Habilitar la conexión a la cámara de la raspberry.
 Desde raspi-config habilitar la cámara. Recuerda que después de esto necesitarás reiniciar la rasp (puedes hacerlo después del siguiente paso).
 ### 4) Configuración previa para el control de servos.
-EDIT: Aparentemente ahora se requiere hacer esto: sudo apt-get install pigpio
+EDIT: Aparentemente ahora se requiere hacer esto: sudo apt-get install pigpio.
+
 Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry. 
 
 
@@ -42,8 +43,8 @@ Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la 
 ## Enlaces relacionados
 - Raspberry Pi Zero en modo OTG (para SSH): https://caron.ws/diy-cartes-microcontroleurs/raspberrypi/pi-zero-otg-ethernet/
 - Captive Portals en Raspberry Pi: https://pimylifeup.com/raspberry-pi-captive-portal/
-- Access Point y Managed Mode Wifi en RPi (No siempre confiable): https://blog.thewalr.us/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/
 - AP y Station Mode usando Docker: https://github.com/txn2/txwifi
 - Captive Portals usando Docker: https://github.com/cjimti/iotweb
-- Script AP: https://github.com/lukicdarkoo/rpi-wifi
+- Access Point y Managed Mode Wifi en RPi (No siempre confiable): https://blog.thewalr.us/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/
+- Script AP del enlace anterior: https://github.com/lukicdarkoo/rpi-wifi
 - Install and configure Pigpiod: https://github.com/guymcswain/pigpio-client/wiki/Install-and-configure-pigpiod
