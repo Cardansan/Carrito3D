@@ -23,7 +23,12 @@ $ sudo apt update
 $ sudo apt install git
 ```
 
-[Probablemente se necesite actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w  o como se describe en el archivo Php_Install_Instructions hallado en este repo. (usar al menos la versión 7.3) Si se pausa el último comando y quedan dos puntos ":" oprimir "q" para continuar.]
+Comprueba tener instalado php con el siguiente comando
+```bash
+$ php –v
+```
+Si no reconoce el comando, entonces actualizar o instalar php como aquí: http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w  o como se describe en el archivo Php_Install_Instructions hallado en este repo. (usar al menos la versión 7.3) 
+Si se pausa el último comando y quedan dos puntos ":" oprimir "q" para continuar.
 
 Instalar RPi-Cam-Web-Interface tal como se menciona en la página: https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
 ```bash
