@@ -1,3 +1,5 @@
+[Extraído de http://www.heidislab.com/tutorials/installing-php-7-1-on-raspbian-stretch-raspberry-pi-zero-w]
+
 Introduction
 On my last tutorial, I showed how to use Ansible to automate the setup of a Web Server running PHP 7 on a Raspberry Pi Zero W (running Raspbian). I confess I was/am a bit outdated on what’s going in the PHP world nowadays, so I wasn’t quite sure of which version is the most recommended or compatible with the newest stuff. After digging around a bit in order to perform some benchmarks and just general research on the web server setup, I figured I’d need PHP 7.1 to get the top frameworks running on their newest versions. This tutorial will show you how to install PHP 7.1 on Raspbian Stretch, for a Raspberry Pi Zero W (it should work fine for other models of Raspberry Pi too).
 
