@@ -23,11 +23,7 @@ $ sudo apt update
 $ sudo apt install git
 ```
 
-Comprueba tener instalado php con el siguiente comando
-```bash
-$ php –v
-```
-Si no reconoce el comando, entonces actualizar o instalar php (usar al menos la versión 7.3) 
+Actualizar o instalar php (usar al menos la versión 7.3) 
 ```bash
 $ sudo apt-get install php7.3
 ```
@@ -36,12 +32,13 @@ Nota: Si se pausa el último comando y quedan dos puntos ":" oprimir "q" para co
 (Antes para instalar php en la versión Stretch de Raspbian se usó el manual como se describe en el archivo Php_Install_Instructions hallado en este repo.)
 
 Instalar RPi-Cam-Web-Interface tal como se menciona en la página: https://elinux.org/RPi-Cam-Web-Interface#Installation_Instructions
+Nota: Borrar el "html" de la configuración al instalar.
+
 ```bash
 $ git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
 $ cd RPi_Cam_Web_Interface
 $./install.sh
 ```
-Nota: Borrar el "html" de la configuración al instalar.
 
 ### 6) Importar los flujos.
 Desde Node-RED importar los flujos hallados en este repositorio. 
@@ -49,7 +46,6 @@ Desde Node-RED importar los flujos hallados en este repositorio.
 No todos los nodos que se usarán vienen en la instalación default de Node-RED, así que se debe revisar cuáles se necesitan instalar desde Manage Palette.
 ### 8) Desplegar los flujos.
 Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la interfaz del vehículo deberá de aparecer en el Dashboard de Node-RED con todo y la transmisión del video en vivo.
-
 
 
 ## Notas
