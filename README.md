@@ -13,8 +13,13 @@ $ sudo apt-get install pigpio
 ```
 
 
-Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry. 
-
+Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". 
+Se verá así:
+```bash
+/usr/bin/pigpiod
+exit 0
+```
+Requiere reinicio de la Raspberry. 
 
 ### 5) Activar la transmisión y recolección de video via web.
 Instala Git, probablemente no venga por default en el Raspberry OS.
@@ -52,7 +57,7 @@ Esto hará que se empiecen a ejecutar siempre que se encienda la raspberry y la 
 - Por la duración de las descargas e instalaciones, dura aproximadamente entre una y dos horas el proceso completo.
 - Otra forma para que la Raspberry Zero se vuelva transmisora de video: https://chriscarey.com/blog/2017/04/30/achieving-high-frame-rate-with-a-raspberry-pi-camera-system/
 (Tiene delay de 3 a 5 seg)
-- Se presentó varias veces el error "mmal: mmal_vc_component_enable: failed to enable component: ENOSPC" solucionado con el comando "sudo pkill raspimjpeg".
+- Se presentó varias veces el error "mmal: mmal_vc_component_enable: failed to enable component: ENOSPC" solucionado con el comando "sudo pkill raspimjpeg" o fijándose que el módulo de la cámara estuviera bien conectado.
 - Para que funcionaran los servos de manera correcta se utilizaron los nodos de aquí https://flows.nodered.org/node/node-red-node-pi-gpiod, tomar en cuenta que tienes que modificar el documento /etc/rc.local y añadir la línea "sudo pigpiod" antes del último "exit 0". Esto trae unas vulnerabilidades (puerto TCP 8888) que se pueden atender según el mismo enlace.
 
 ## Enlaces relacionados
