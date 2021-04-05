@@ -13,8 +13,13 @@ $ sudo apt-get install pigpio
 ```
 
 
-Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". Requiere reinicio de la Raspberry. 
-
+Modificar el documento /etc/rc.local y añadir la línea "/usr/bin/pigpiod" al final del archivo, justo antes del último "exit 0". 
+Se verá así:
+```bash
+/usr/bin/pigpiod
+exit 0
+```
+Requiere reinicio de la Raspberry. 
 
 ### 5) Activar la transmisión y recolección de video via web.
 Instala Git, probablemente no venga por default en el Raspberry OS.
