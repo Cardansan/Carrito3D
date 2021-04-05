@@ -3481,7 +3481,6 @@
         "id": "187c9815.e5a958",
         "type": "inject",
         "z": "2acc8810.81c7a8",
-        "d": true,
         "name": "",
         "props": [
             {
@@ -4340,7 +4339,6 @@
         "id": "f744c9f2.ebc488",
         "type": "inject",
         "z": "2acc8810.81c7a8",
-        "d": true,
         "name": "Activar cámara",
         "props": [
             {

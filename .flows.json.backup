@@ -1687,6 +1687,15 @@
         "type": "inject",
         "z": "df558687.1df838",
         "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
         "repeat": "0.2",
         "crontab": "",
         "once": false,
@@ -2168,7 +2177,7 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "5",
+        "rate": "7",
         "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
