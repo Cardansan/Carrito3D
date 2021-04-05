@@ -808,6 +808,8 @@
         "func": "var reversa = global.get('reversa');\nvar radar = global.get('radar');\nvar auto = global.get('auto');\nvar motDA, motDB, motIA, motIB;\nvar velMax = global.get('velMax')||100;\nvar pwmD = velMax;\nvar pwmI = velMax;\nvar sector = global.get('sector')||5;\nvar motores = global.get('motores')||false;\n\n\n\nif(reversa === true)\n{\n    if((sector < 4)) // Esta libre la izquierda\n    {\n       pwmI = velMax;\n       pwmD = velMax - (Math.abs((sector - 4)*10));\n    }\n    else if(sector > 5) // esta libre la derecha\n    {\n        pwmI = velMax - (Math.abs((5 - sector)*10));\n        pwmD = velMax;\n    }\n    else\n    {\n        pwmI= velMax;\n        pwmD = velMax;\n    }\n}\nelse\n{\n   if((sector < 4)) // Esta libre la izquierda\n    {\n       pwmI = velMax - (Math.abs((sector - 4)*10));\n       pwmD = velMax;\n    }\n    else if(sector > 5) // esta libre la derecha\n    {\n        pwmI = velMax;\n        pwmD = velMax - (Math.abs((5 - sector)*10));\n    }\n    else\n    {\n        pwmI= velMax;\n        pwmD = velMax;\n    } \n}\n\nif((reversa === true) && ((auto === true) || motores === true)) // No hay reversa\n{\n    motDA = {payload:0};\n    motDB = {payload:pwmD};\n    motIA = {payload:0};\n    motIB = {payload:pwmI};\n}\nelse if((reversa === false) && ((auto === true) || (motores === true)))\n{\n    motDA = {payload:pwmD};\n    motDB = {payload:0};\n    motIA = {payload:pwmI};\n    motIB = {payload:0};\n}\nelse\n{\n    motDA = {payload:0};\n    motDB = {payload:0};\n    motIA = {payload:0};\n    motIB = {payload:0};\n}\n\nreturn [motIA,motIB,motDA,motDB];",
         "outputs": 4,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 280,
         "y": 460,
         "wires": [
@@ -1685,6 +1687,15 @@
         "type": "inject",
         "z": "df558687.1df838",
         "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
         "repeat": "0.2",
         "crontab": "",
         "once": false,
@@ -1695,7 +1706,9 @@
         "x": 170,
         "y": 140,
         "wires": [
-            []
+            [
+                "80038dbe.f9c1e"
+            ]
         ]
     },
     {
@@ -2164,7 +2177,7 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "5",
+        "rate": "7",
         "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
