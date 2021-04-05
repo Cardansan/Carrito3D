@@ -3468,7 +3468,17 @@
         "id": "187c9815.e5a958",
         "type": "inject",
         "z": "2acc8810.81c7a8",
+        "d": true,
         "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
@@ -4131,6 +4141,16 @@
         "type": "inject",
         "z": "2acc8810.81c7a8",
         "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "num"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
@@ -4163,6 +4183,16 @@
         "type": "inject",
         "z": "2acc8810.81c7a8",
         "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "num"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
@@ -4271,6 +4301,8 @@
         "func": "var limiteDer = msg.payload\nvar centro = global.get('centro')\n\nglobal.set('medioLimiteDer', centro - ((centro - limiteDer)/2))\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 650,
         "y": 400,
         "wires": [
@@ -4295,7 +4327,17 @@
         "id": "f744c9f2.ebc488",
         "type": "inject",
         "z": "2acc8810.81c7a8",
+        "d": true,
         "name": "Activar cámara",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
@@ -4315,14 +4357,14 @@
         "id": "5feb4cd2.771204",
         "type": "exec",
         "z": "2acc8810.81c7a8",
-        "command": "./RPi_Cam_Web_Interface/start.sh",
+        "command": "sudo ./RPi_Cam_Web_Interface/start.sh",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 440,
+        "x": 600,
         "y": 620,
         "wires": [
             [],
@@ -4334,7 +4376,7 @@
         "id": "f1e26c35.24f5e",
         "type": "pi-gpiod out",
         "z": "f24f522c.5061",
-        "name": "Volante",
+        "name": "VolanteShield",
         "host": "localhost",
         "port": 8888,
         "pin": "26",
@@ -4343,7 +4385,7 @@
         "out": "ser",
         "sermin": "500",
         "sermax": "2500",
-        "x": 700,
+        "x": 680,
         "y": 240,
         "wires": []
     },
@@ -4353,7 +4395,7 @@
         "z": "f24f522c.5061",
         "name": "Volante duplicado",
         "info": "El servo del Radar ni el Servo del volante en RedFire no sirven correctamente, el tema es dek shield, se agrega un pin extra",
-        "x": 510,
+        "x": 490,
         "y": 260,
         "wires": []
     },
@@ -7054,6 +7096,18 @@
         "type": "inject",
         "z": "2acc8810.81c7a8",
         "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "SIGTERM",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": false,
@@ -9772,7 +9826,7 @@
         "id": "8b48cef7.73baa",
         "type": "function",
         "z": "c7c81a64.db1438",
-        "name": "formato para botToken",
+        "name": "formato para BotToken",
         "func": "var token = msg.token;\n\nmsg.payload = 'sed -i \"s/^process.env.BotToken =.*/process.env.BotToken =';\nmsg.payload += \"'\";\nmsg.payload += token;\nmsg.payload += \"'\";\nmsg.payload += ';/\"';\nmsg.payload +=  ' .node-red/settings.js';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -10263,6 +10317,8 @@
         "func": "var nombre = global.get('vapriName');\n\nmsg.payload = 'sed -i \"s/^title: .*/title: ';\nmsg.payload += \"'\";\nmsg.payload += nombre;\nmsg.payload += \"'\";\nmsg.payload += '/\"';\nmsg.payload +=  ' .node-red/settings.js';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 910,
         "y": 520,
         "wires": [
@@ -10594,7 +10650,7 @@
         "type": "debug",
         "z": "28e94e1a.327fa2",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -13350,7 +13406,9 @@
         "y": 960,
         "wires": [
             [
-                "8df44874.c66a88"
+                "8df44874.c66a88",
+                "1bd1ec41.44f2a4",
+                "42b19e4.60cfa6"
             ]
         ]
     },
@@ -13370,7 +13428,7 @@
         "wires": [
             [
                 "72fb008c.b8a7d",
-                "da170762.6352b8"
+                "9bdeca13.74ca88"
             ],
             [],
             []
@@ -13380,8 +13438,8 @@
         "id": "8df44874.c66a88",
         "type": "function",
         "z": "2acc8810.81c7a8",
-        "name": "formato para botToken",
-        "func": "\nmsg.payload = 'sed -i \"13 i process.env.BotToken = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"14 i process.env.ChatID = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"15 i process.env.vapriName = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\n\nreturn null;",
+        "name": "formato crear variables ENV",
+        "func": "\nmsg.payload = 'sed -i \"13 i process.env.BotToken = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"14 i process.env.ChatID = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"15 i process.env.vapriName = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"16 i title:  = ' + \"'\" + 'VAPRI_Default' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -13419,57 +13477,9 @@
         "links": [
             "e0772076.8a5f"
         ],
-        "x": 1055,
+        "x": 1015,
         "y": 960,
         "wires": []
-    },
-    {
-        "id": "fa8ad4a6.29d888",
-        "type": "switch",
-        "z": "2acc8810.81c7a8",
-        "name": "",
-        "property": "count",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gte",
-                "v": "4",
-                "vt": "num"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 950,
-        "y": 960,
-        "wires": [
-            [
-                "22ceeda1.0d81a2"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "da170762.6352b8",
-        "type": "timed-counter",
-        "z": "2acc8810.81c7a8",
-        "name": "Counter",
-        "timelimit": "2",
-        "timeunit": "1000",
-        "withhold": false,
-        "fixedtimeout": false,
-        "pertopic": false,
-        "x": 875,
-        "y": 960,
-        "wires": [
-            [
-                "fa8ad4a6.29d888"
-            ]
-        ],
-        "l": false
     },
     {
         "id": "4914473b.ad8018",
@@ -13497,5 +13507,251 @@
         "x": 630,
         "y": 900,
         "wires": []
+    },
+    {
+        "id": "9bdeca13.74ca88",
+        "type": "delay",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 920,
+        "y": 960,
+        "wires": [
+            [
+                "22ceeda1.0d81a2"
+            ]
+        ]
+    },
+    {
+        "id": "1bd1ec41.44f2a4",
+        "type": "change",
+        "z": "2acc8810.81c7a8",
+        "name": "set limDer",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "80",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1020,
+        "wires": [
+            [
+                "96f310e7.5be4a"
+            ]
+        ]
+    },
+    {
+        "id": "42b19e4.60cfa6",
+        "type": "change",
+        "z": "2acc8810.81c7a8",
+        "name": "set limIzq",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "20",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1060,
+        "wires": [
+            [
+                "7e03562f.d6a348"
+            ]
+        ]
+    },
+    {
+        "id": "29dc1c7b.2c6a94",
+        "type": "inject",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "x": 370,
+        "y": 1040,
+        "wires": [
+            [
+                "1bd1ec41.44f2a4",
+                "42b19e4.60cfa6"
+            ]
+        ]
+    },
+    {
+        "id": "ff5a216b.f5311",
+        "type": "change",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "centro",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 1100,
+        "wires": [
+            [
+                "a126a2a9.263c7",
+                "d10caae9.facec8"
+            ]
+        ]
+    },
+    {
+        "id": "96f310e7.5be4a",
+        "type": "change",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "limiteDer",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7e03562f.d6a348",
+        "type": "change",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "limiteIzq",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 1060,
+        "wires": [
+            [
+                "1af29fbd.dae3"
+            ]
+        ]
+    },
+    {
+        "id": "1af29fbd.dae3",
+        "type": "change",
+        "z": "2acc8810.81c7a8",
+        "name": "set Centro",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "50",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 1100,
+        "wires": [
+            [
+                "ff5a216b.f5311"
+            ]
+        ]
+    },
+    {
+        "id": "a126a2a9.263c7",
+        "type": "function",
+        "z": "2acc8810.81c7a8",
+        "name": "medioLimiteDer",
+        "func": "var limiteDer = msg.payload\nvar centro = global.get('centro')\n\nglobal.set('medioLimiteDer', centro - ((centro - limiteDer)/2))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 900,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d10caae9.facec8",
+        "type": "function",
+        "z": "2acc8810.81c7a8",
+        "name": "medioLimiteIzq",
+        "func": "var limiteIzq = msg.payload\nvar centro = global.get('centro')\n\nglobal.set('medioLimiteIzq', ((limiteIzq - centro)/2)+centro)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 900,
+        "y": 1060,
+        "wires": [
+            []
+        ]
     }
 ]
