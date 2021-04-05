@@ -1695,9 +1695,7 @@
         "x": 170,
         "y": 140,
         "wires": [
-            [
-                "80038dbe.f9c1e"
-            ]
+            []
         ]
     },
     {
@@ -3683,7 +3681,7 @@
         "type": "debug",
         "z": "28e94e1a.327fa2",
         "name": "Telegram",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -5107,16 +5105,9 @@
         "x": 450,
         "y": 260,
         "wires": [
-            [
-                "57710af4.c4e894"
-            ],
-            [
-                "bfd9c137.14da6"
-            ],
-            [
-                "57710af4.c4e894",
-                "bfd9c137.14da6"
-            ]
+            [],
+            [],
+            []
         ],
         "outputLabels": [
             "Google Home",
@@ -6046,19 +6037,25 @@
         "id": "cb21fc3.b17fc",
         "type": "inject",
         "z": "2acc8810.81c7a8",
-        "name": "",
+        "name": "test ENV variables",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
         "repeat": "",
         "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
+        "once": true,
+        "onceDelay": "2",
         "topic": "",
-        "payload": "\"F00\"",
+        "payload": "vapriName",
         "payloadType": "env",
-        "x": 170,
+        "x": 190,
         "y": 820,
         "wires": [
             [
-                "72fb008c.b8a7d"
+                "72fb008c.b8a7d",
+                "dba4d5ad.b5a378"
             ]
         ]
     },
@@ -9779,6 +9776,8 @@
         "func": "var token = msg.token;\n\nmsg.payload = 'sed -i \"s/^process.env.BotToken =.*/process.env.BotToken =';\nmsg.payload += \"'\";\nmsg.payload += token;\nmsg.payload += \"'\";\nmsg.payload += ';/\"';\nmsg.payload +=  ' .node-red/settings.js';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 960,
         "y": 660,
         "wires": [
@@ -9839,16 +9838,18 @@
         "type": "exec",
         "z": "c7c81a64.db1438",
         "command": "node-red-restart",
-        "addpay": true,
+        "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "reiniciar node-RED",
-        "x": 1550,
+        "x": 1650,
         "y": 660,
         "wires": [
-            [],
+            [
+                "4914473b.ad8018"
+            ],
             [],
             []
         ]
@@ -9878,6 +9879,18 @@
         "type": "inject",
         "z": "d47f9ae6.2bf798",
         "name": "token",
+        "props": [
+            {
+                "p": "payload",
+                "v": "BotToken",
+                "vt": "env"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
@@ -10053,10 +10066,13 @@
         "id": "6cffa1f6.7c692",
         "type": "function",
         "z": "c7c81a64.db1438",
+        "d": true,
         "name": "Formato para hostapd ",
         "func": "var nombre = msg.payload;\n\nmsg.payload = 'sudo sed -i ';\nmsg.payload += '\"';\nmsg.payload += 's/^ssid=.*/ssid='\nmsg.payload += nombre;\nmsg.payload += '/\" '\nmsg.payload += '/etc/hostapd/hostapd.conf'\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 960,
         "y": 240,
         "wires": [
@@ -10129,6 +10145,8 @@
         "func": "var nombre = msg.payload;\n\nmsg.payload = 'sed -i \"s/^process.env.vapriName =.*/process.env.vapriName =';\nmsg.payload += \"'\";\nmsg.payload += nombre;\nmsg.payload += \"'\";\nmsg.payload += ';/\"';\nmsg.payload +=  ' .node-red/settings.js';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 920,
         "y": 460,
         "wires": [
@@ -10314,6 +10332,18 @@
         "type": "inject",
         "z": "d47f9ae6.2bf798",
         "name": "ChatID",
+        "props": [
+            {
+                "p": "payload",
+                "v": "ChatID",
+                "vt": "env"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
@@ -10434,6 +10464,8 @@
         "func": "var chatid = msg.chatID;\n\nmsg.payload = 'sed -i \"s/^process.env.ChatID =.*/process.env.ChatID =';\nmsg.payload += \"'\";\nmsg.payload += chatid;\nmsg.payload += \"'\";\nmsg.payload += ';/\"';\nmsg.payload +=  ' .node-red/settings.js';\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 980,
         "y": 840,
         "wires": [
@@ -13129,20 +13161,6 @@
         "wires": []
     },
     {
-        "id": "2244521a.3adade",
-        "type": "debug",
-        "z": "df558687.1df838",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 740,
-        "y": 1160,
-        "wires": []
-    },
-    {
         "id": "d4f61c77.1ddcf",
         "type": "timed-counter",
         "z": "8a0a444f.751b78",
@@ -13269,26 +13287,6 @@
         ]
     },
     {
-        "id": "57710af4.c4e894",
-        "type": "googlehome-notifier-offline",
-        "z": "df558687.1df838",
-        "server": "30684173.e2231e",
-        "name": "Google Home",
-        "x": 800,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "bfd9c137.14da6",
-        "type": "googlehome-notifier-offline",
-        "z": "df558687.1df838",
-        "server": "e12130ea.34705",
-        "name": "Google Home Mini",
-        "x": 790,
-        "y": 320,
-        "wires": []
-    },
-    {
         "id": "cfba519e.e77b6",
         "type": "googlehome-notifier-offline",
         "z": "2ce33584.a2bf7a",
@@ -13330,6 +13328,148 @@
         "wires": [
             [
                 "615399aa.c94dd8"
+            ]
+        ]
+    },
+    {
+        "id": "dba4d5ad.b5a378",
+        "type": "switch",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 390,
+        "y": 960,
+        "wires": [
+            [
+                "8df44874.c66a88"
+            ]
+        ]
+    },
+    {
+        "id": "c47d482a.ba7bf8",
+        "type": "exec",
+        "z": "2acc8810.81c7a8",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 770,
+        "y": 960,
+        "wires": [
+            [
+                "72fb008c.b8a7d",
+                "9bdeca13.74ca88"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8df44874.c66a88",
+        "type": "function",
+        "z": "2acc8810.81c7a8",
+        "name": "formato para botToken",
+        "func": "\nmsg.payload = 'sed -i \"13 i process.env.BotToken = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"14 i process.env.ChatID = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\nmsg.payload = 'sed -i \"15 i process.env.vapriName = ' + \"'\" + '(vacio)' + \"'\" + ';\" .node-red/settings.js';\nnode.send(msg);\n\n\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 960,
+        "wires": [
+            [
+                "c47d482a.ba7bf8"
+            ]
+        ]
+    },
+    {
+        "id": "e0772076.8a5f",
+        "type": "link in",
+        "z": "c7c81a64.db1438",
+        "name": "toRebootNode-RED",
+        "links": [
+            "71be51ac.457d",
+            "22ceeda1.0d81a2"
+        ],
+        "x": 1495,
+        "y": 660,
+        "wires": [
+            [
+                "577c549b.277dfc"
+            ]
+        ]
+    },
+    {
+        "id": "22ceeda1.0d81a2",
+        "type": "link out",
+        "z": "2acc8810.81c7a8",
+        "name": "fromCrearVariablesENV",
+        "links": [
+            "e0772076.8a5f"
+        ],
+        "x": 1015,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "4914473b.ad8018",
+        "type": "debug",
+        "z": "c7c81a64.db1438",
+        "name": "Restart Node-RED",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1850,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "da5aefea.7a725",
+        "type": "comment",
+        "z": "2acc8810.81c7a8",
+        "name": "Si detecta que no existe ${vapriName} es el primer inicio de Node-RED en una nueva SD.",
+        "info": "Y crea las variables para ser reemplazadas desde la UI.",
+        "x": 630,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "9bdeca13.74ca88",
+        "type": "delay",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 920,
+        "y": 960,
+        "wires": [
+            [
+                "22ceeda1.0d81a2"
             ]
         ]
     }
