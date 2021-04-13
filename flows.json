@@ -977,11 +977,11 @@
         "links": [
             "7949855e.5454ac"
         ],
-        "x": 720,
-        "y": 116,
+        "x": 715,
+        "y": 120,
         "wires": [
             [
-                "653a12c5.159f1c"
+                "22fea78d.df3de8"
             ]
         ]
     },
@@ -3557,12 +3557,10 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 1165,
-        "y": 116,
+        "x": 1100,
+        "y": 60,
         "wires": [
-            [
-                "2b3da274.fd5e2e"
-            ]
+            []
         ]
     },
     {
@@ -9656,22 +9654,6 @@
         "wires": []
     },
     {
-        "id": "653a12c5.159f1c",
-        "type": "function",
-        "z": "c7c81a64.db1438",
-        "name": "Formato wpa_supplicant",
-        "func": "var ssid = msg.payload.ssid;\nvar psk = msg.payload.pass;\n\n\nvar formato = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' \nformato += '\\n';\nformato += 'update_config=1'\nformato += '\\n';\nformato += 'country=MX'\nformato += '\\n';\n\nformato += 'network={'\nformato += '\\n\\t';\nformato += 'ssid=\"'\nformato += ssid;\nformato += '\"\\n\\t';\nformato += 'psk=\"';\nformato += psk\nformato += '\"\\n\\t';\nformato += 'id_str=\"AP1\"'\nformato += '\\n\\t';\nformato += \"}\";\n\nmsg = {payload:formato};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 875,
-        "y": 116,
-        "wires": [
-            [
-                "7892a413.68d79c"
-            ]
-        ]
-    },
-    {
         "id": "2b3da274.fd5e2e",
         "type": "exec",
         "z": "c7c81a64.db1438",
@@ -13774,5 +13756,108 @@
         "x": 480,
         "y": 1020,
         "wires": []
+    },
+    {
+        "id": "c857e7e2.ccf228",
+        "type": "inject",
+        "z": "8a0a444f.751b78",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "1d92eb13.daccc5"
+            ]
+        ]
+    },
+    {
+        "id": "cc1bcba8.8ae5f8",
+        "type": "function",
+        "z": "c7c81a64.db1438",
+        "name": "Formato wpa_supplicant",
+        "func": "var ssid = msg.payload.ssid;\nvar psk = msg.payload.pass;\n\n\nvar formato = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' \nformato += '\\n';\nformato += 'update_config=1'\nformato += '\\n';\nformato += 'country=MX'\nformato += '\\n';\n\nformato += 'network={'\nformato += '\\n\\t';\nformato += 'ssid=\"'\nformato += ssid;\nformato += '\"\\n\\t';\nformato += 'psk=\"';\nformato += psk\nformato += '\"\\n\\t';\nformato += 'id_str=\"AP1\"'\nformato += '\\n\\t';\nformato += \"}\";\n\nmsg = {payload:formato};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1090,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22fea78d.df3de8",
+        "type": "function",
+        "z": "c7c81a64.db1438",
+        "name": "Formato Docker WiFi",
+        "func": "var ssid = msg.payload.ssid;\nvar psk = msg.payload.pass;\n\n// curl -w \"\\n\" -d '{\"ssid\":\"Habia una vez\", \"psk\":\"-truz, jaja\"}' \\\n//     -H \"Content-Type: application/json\" \\\n//     -X POST localhost:8080/connect\n\nvar formato = 'curl -w \"'\nformato += '\\\\n';\nformato += '\" -d ' \nformato += \"'\";\nformato += '{\"ssid\":\"' + ssid +'\", \"psk\":\"' + psk + '\"}'\nformato += \"' \";\nformato += '\\ ';\nformato += '-H \"Content-Type: application/json\" \\ ';\nformato += '-X POST localhost:8080/connect';\n\nmsg = {payload:formato};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 120,
+        "wires": [
+            [
+                "e33bf0b4.2137",
+                "c8de7efa.71bf8"
+            ]
+        ]
+    },
+    {
+        "id": "e33bf0b4.2137",
+        "type": "debug",
+        "z": "c7c81a64.db1438",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c8de7efa.71bf8",
+        "type": "exec",
+        "z": "c7c81a64.db1438",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1070,
+        "y": 120,
+        "wires": [
+            [
+                "e33bf0b4.2137"
+            ],
+            [
+                "e33bf0b4.2137"
+            ],
+            [
+                "e33bf0b4.2137"
+            ]
+        ]
     }
 ]
