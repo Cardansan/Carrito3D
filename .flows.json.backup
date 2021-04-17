@@ -1129,7 +1129,8 @@
             [
                 "f0ad2c09.36e9d",
                 "9b8e3ad1.188148",
-                "5b707dfa.6f2f14"
+                "5b707dfa.6f2f14",
+                "a87d04b8.5697e8"
             ]
         ]
     },
@@ -9310,7 +9311,8 @@
         "y": 120,
         "wires": [
             [
-                "b3f4b56c.5c7c48"
+                "b3f4b56c.5c7c48",
+                "1e2b813f.3db15f"
             ],
             [],
             []
@@ -9375,6 +9377,8 @@
         "func": "msg.payload = Number(msg.payload)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 1047,
         "y": 120,
         "wires": [
@@ -9452,7 +9456,7 @@
         "rules": [
             {
                 "t": "lt",
-                "v": "150",
+                "v": "200",
                 "vt": "num"
             }
         ],
@@ -13758,7 +13762,39 @@
         "wires": []
     },
     {
-        "id": "c857e7e2.ccf228",
+        "id": "1e2b813f.3db15f",
+        "type": "debug",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a87d04b8.5697e8",
+        "type": "debug",
+        "z": "8a0a444f.751b78",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2f5354a0.8dd2ec",
         "type": "inject",
         "z": "8a0a444f.751b78",
         "name": "",
@@ -13778,85 +13814,16 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
+<<<<<<< HEAD
         "x": 230,
         "y": 640,
+=======
+        "x": 240,
+        "y": 660,
+>>>>>>> e366559aff4702f6a9fe67570585c1931dfd9428
         "wires": [
             [
                 "1d92eb13.daccc5"
-            ]
-        ]
-    },
-    {
-        "id": "cc1bcba8.8ae5f8",
-        "type": "function",
-        "z": "c7c81a64.db1438",
-        "name": "Formato wpa_supplicant",
-        "func": "var ssid = msg.payload.ssid;\nvar psk = msg.payload.pass;\n\n\nvar formato = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' \nformato += '\\n';\nformato += 'update_config=1'\nformato += '\\n';\nformato += 'country=MX'\nformato += '\\n';\n\nformato += 'network={'\nformato += '\\n\\t';\nformato += 'ssid=\"'\nformato += ssid;\nformato += '\"\\n\\t';\nformato += 'psk=\"';\nformato += psk\nformato += '\"\\n\\t';\nformato += 'id_str=\"AP1\"'\nformato += '\\n\\t';\nformato += \"}\";\n\nmsg = {payload:formato};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1150,
-        "y": 20,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "22fea78d.df3de8",
-        "type": "function",
-        "z": "c7c81a64.db1438",
-        "name": "Formato Docker WiFi",
-        "func": "var ssid = msg.payload.ssid;\nvar psk = msg.payload.pass;\n\n// curl -w \"\\n\" -d '{\"ssid\":\"Habia una vez\", \"psk\":\"-truz, jaja\"}' \\\n//     -H \"Content-Type: application/json\" \\\n//     -X POST localhost:8080/connect\n\nvar formato = 'curl -w \"'\nformato += '\\\\n';\nformato += '\" -d ' \nformato += \"'\";\nformato += '{\"ssid\":\"' + ssid +'\", \"psk\":\"' + psk + '\"}'\nformato += \"' \";\nformato += '\\ ';\nformato += '-H \"Content-Type: application/json\" \\ ';\nformato += '-X POST localhost:8080/connect';\n\nmsg = {payload:formato};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 880,
-        "y": 120,
-        "wires": [
-            [
-                "e33bf0b4.2137",
-                "c8de7efa.71bf8"
-            ]
-        ]
-    },
-    {
-        "id": "e33bf0b4.2137",
-        "type": "debug",
-        "z": "c7c81a64.db1438",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1270,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "c8de7efa.71bf8",
-        "type": "exec",
-        "z": "c7c81a64.db1438",
-        "command": "",
-        "addpay": true,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 1090,
-        "y": 160,
-        "wires": [
-            [
-                "e33bf0b4.2137"
-            ],
-            [
-                "e33bf0b4.2137"
-            ],
-            [
-                "e33bf0b4.2137"
             ]
         ]
     }

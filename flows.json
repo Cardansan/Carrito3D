@@ -1129,7 +1129,8 @@
             [
                 "f0ad2c09.36e9d",
                 "9b8e3ad1.188148",
-                "5b707dfa.6f2f14"
+                "5b707dfa.6f2f14",
+                "a87d04b8.5697e8"
             ]
         ]
     },
@@ -9310,7 +9311,8 @@
         "y": 120,
         "wires": [
             [
-                "b3f4b56c.5c7c48"
+                "b3f4b56c.5c7c48",
+                "1e2b813f.3db15f"
             ],
             [],
             []
@@ -9375,6 +9377,8 @@
         "func": "msg.payload = Number(msg.payload)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 1047,
         "y": 120,
         "wires": [
@@ -9452,7 +9456,7 @@
         "rules": [
             {
                 "t": "lt",
-                "v": "150",
+                "v": "200",
                 "vt": "num"
             }
         ],
@@ -13859,5 +13863,76 @@
                 "e33bf0b4.2137"
             ]
         ]
+    },
+    {
+        "id": "1e2b813f.3db15f",
+        "type": "debug",
+        "z": "2acc8810.81c7a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a87d04b8.5697e8",
+        "type": "debug",
+        "z": "8a0a444f.751b78",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2f5354a0.8dd2ec",
+        "type": "inject",
+        "z": "8a0a444f.751b78",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 230,
+        "y": 680,
+        "wires": [
+            [
+                "1d92eb13.daccc5"
+            ]
+        ]
+    },
+    {
+        "id": "c557bfbf.c2119",
+        "type": "comment",
+        "z": "8a0a444f.751b78",
+        "name": "Esto apaga los motores al inicio de cada Deploy",
+        "info": "",
+        "x": 340,
+        "y": 640,
+        "wires": []
     }
 ]
