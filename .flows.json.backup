@@ -28,16 +28,16 @@
         "info": ""
     },
     {
-        "id": "28e94e1a.327fa2",
+        "id": "df558687.1df838",
         "type": "tab",
-        "label": "Telegram",
+        "label": "Cámara+QR",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "df558687.1df838",
+        "id": "28e94e1a.327fa2",
         "type": "tab",
-        "label": "Cámara+QR",
+        "label": "Telegram",
         "disabled": false,
         "info": ""
     },
@@ -491,6 +491,35 @@
         "ipaddress": "192.168.68.100",
         "name": "Inventoteca Home Mini",
         "language": "es"
+    },
+    {
+        "id": "e6aee20a.8c8de",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "13325c7e.01d734",
+        "type": "telegrambot-config",
+        "botname": "DisErgo0_Bot",
+        "usernames": "",
+        "chatIds": "",
+        "pollInterval": "300"
     },
     {
         "id": "687a9f02.3bc6d",
@@ -3549,22 +3578,6 @@
         ]
     },
     {
-        "id": "7892a413.68d79c",
-        "type": "file",
-        "z": "c7c81a64.db1438",
-        "name": "",
-        "filename": "/etc/wpa_supplicant/wpa_supplicant.conf",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 1160,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "2de91eae.2a37b2",
         "type": "link out",
         "z": "8a7ddc8.106792",
@@ -3737,7 +3750,9 @@
         "links": [
             "2de91eae.2a37b2",
             "af8bea66.0e6628",
-            "661afe85.93cad"
+            "661afe85.93cad",
+            "3126966f.81c91a",
+            "f6c1edce.672b5"
         ],
         "x": 795,
         "y": 280,
@@ -9456,7 +9471,7 @@
         "rules": [
             {
                 "t": "lt",
-                "v": "200",
+                "v": "300",
                 "vt": "num"
             }
         ],
@@ -13762,6 +13777,95 @@
         "wires": []
     },
     {
+        "id": "c857e7e2.ccf228",
+        "type": "inject",
+        "z": "8a0a444f.751b78",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "1d92eb13.daccc5"
+            ]
+        ]
+    },
+    {
+        "id": "22fea78d.df3de8",
+        "type": "function",
+        "z": "c7c81a64.db1438",
+        "name": "Formato Docker WiFi",
+        "func": "var ssid = msg.payload.ssid;\nvar psk = msg.payload.pass;\n\n// curl -w \"\\n\" -d '{\"ssid\":\"Habia una vez\", \"psk\":\"-truz, jaja\"}' \\\n//     -H \"Content-Type: application/json\" \\\n//     -X POST localhost:8080/connect\n\nvar formato = 'curl -w \"'\nformato += '\\\\n';\nformato += '\" -d ' \nformato += \"'\";\nformato += '{\"ssid\":\"' + ssid +'\", \"psk\":\"' + psk + '\"}'\nformato += \"' \";\nformato += '\\ ';\nformato += '-H \"Content-Type: application/json\" \\ ';\nformato += '-X POST localhost:8080/connect';\n\nmsg = {payload:formato};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 120,
+        "wires": [
+            [
+                "e33bf0b4.2137",
+                "c8de7efa.71bf8"
+            ]
+        ]
+    },
+    {
+        "id": "e33bf0b4.2137",
+        "type": "debug",
+        "z": "c7c81a64.db1438",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c8de7efa.71bf8",
+        "type": "exec",
+        "z": "c7c81a64.db1438",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1070,
+        "y": 120,
+        "wires": [
+            [
+                "e33bf0b4.2137"
+            ],
+            [
+                "e33bf0b4.2137"
+            ],
+            [
+                "e33bf0b4.2137"
+            ]
+        ]
+    },
+    {
         "id": "1e2b813f.3db15f",
         "type": "debug",
         "z": "2acc8810.81c7a8",
@@ -13814,17 +13918,403 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-<<<<<<< HEAD
         "x": 230,
-        "y": 640,
-=======
-        "x": 240,
-        "y": 660,
->>>>>>> e366559aff4702f6a9fe67570585c1931dfd9428
+        "y": 680,
         "wires": [
             [
                 "1d92eb13.daccc5"
             ]
         ]
+    },
+    {
+        "id": "c557bfbf.c2119",
+        "type": "comment",
+        "z": "8a0a444f.751b78",
+        "name": "Esto apaga los motores al inicio de cada Deploy",
+        "info": "",
+        "x": 340,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "21bc2036.ee479",
+        "type": "mqtt out",
+        "z": "df558687.1df838",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "retain": "false",
+        "broker": "e6aee20a.8c8de",
+        "x": 1210,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f2bc6cd7.15321",
+        "type": "function",
+        "z": "df558687.1df838",
+        "name": "/vapris/VAPRINAME/cam",
+        "func": "var vapriNameCaps = global.get('vapriName')\nvar vapriName = vapriNameCaps.toLowerCase();\n\nmsg.topic = '/vapris/'+ vapriName +'/cam'\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 910,
+        "y": 180,
+        "wires": [
+            [
+                "1e4c0ba.cd642f4",
+                "21bc2036.ee479"
+            ]
+        ]
+    },
+    {
+        "id": "1e4c0ba.cd642f4",
+        "type": "debug",
+        "z": "df558687.1df838",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1350,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c4f91df3.caef7",
+        "type": "http in",
+        "z": "df558687.1df838",
+        "name": "",
+        "url": "/files",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1220,
+        "wires": [
+            [
+                "cc5a37cf.86c6d8",
+                "c14febc0.522db8"
+            ]
+        ]
+    },
+    {
+        "id": "ef0aaf76.2236e",
+        "type": "http response",
+        "z": "df558687.1df838",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 510,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "cc5a37cf.86c6d8",
+        "type": "debug",
+        "z": "df558687.1df838",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "6a156025.b1c9f",
+        "type": "inject",
+        "z": "df558687.1df838",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1320,
+        "wires": [
+            [
+                "fd62708f.a560a",
+                "9a1341d3.d9c07"
+            ]
+        ]
+    },
+    {
+        "id": "9c0b2081.b1ac6",
+        "type": "function",
+        "z": "df558687.1df838",
+        "name": "Format the header and payload",
+        "func": "msg.headers = {\n    \"Content-Type\": \"multipart/form-data; boundary=------------------------d74496d66958873e\"\n}\n\n\nmsg.payload = '--------------------------d74496d66958873e\\r\\n'+\n'Content-Disposition: form-data; name=\"select\"\\r\\n'+\n'\\r\\n'+\n'true\\r\\n'+\n'--------------------------d74496d66958873e\\r\\n'+\n'Content-Disposition: form-data; name=\"print\"\\r\\n'+\n'\\r\\n'+\n'true\\r\\n'+\n'--------------------------d74496d66958873e\\r\\n'+\n'Content-Disposition: form-data; name=\"file\"; filename=\"'+msg.filename+'\"\\r\\n'+\n'Content-Type: application/octet-stream\\r\\n'+\n'\\r\\n'+\nmsg.payload+'\\r\\n'+\n'--------------------------d74496d66958873e--\\r\\n';\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 290,
+        "y": 1380,
+        "wires": [
+            [
+                "85c748e8.2d1f88"
+            ]
+        ]
+    },
+    {
+        "id": "85c748e8.2d1f88",
+        "type": "http request",
+        "z": "df558687.1df838",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/files",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 530,
+        "y": 1380,
+        "wires": [
+            [
+                "a4810d7a.f652a"
+            ]
+        ]
+    },
+    {
+        "id": "a4810d7a.f652a",
+        "type": "debug",
+        "z": "df558687.1df838",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 710,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "c14febc0.522db8",
+        "type": "change",
+        "z": "df558687.1df838",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "okay",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 1220,
+        "wires": [
+            [
+                "ef0aaf76.2236e"
+            ]
+        ]
+    },
+    {
+        "id": "fd62708f.a560a",
+        "type": "file in",
+        "z": "df558687.1df838",
+        "name": "",
+        "filename": "/tmp/file.txt",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "x": 110,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9a1341d3.d9c07",
+        "type": "file in",
+        "z": "df558687.1df838",
+        "name": "",
+        "filename": "/dev/shm/mjpeg/cam.jpg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 550,
+        "y": 1320,
+        "wires": [
+            [
+                "9c0b2081.b1ac6"
+            ]
+        ]
+    },
+    {
+        "id": "a85a9846.f5c598",
+        "type": "telegrambot-command",
+        "z": "28e94e1a.327fa2",
+        "name": "/ip",
+        "bot": "3ad0e292.3924ce",
+        "command": "/ip",
+        "commandType": "str",
+        "commandCase": false,
+        "x": 70,
+        "y": 820,
+        "wires": [
+            [
+                "b9ab70c4.1723c"
+            ]
+        ]
+    },
+    {
+        "id": "b9ab70c4.1723c",
+        "type": "link out",
+        "z": "28e94e1a.327fa2",
+        "name": "from /ip",
+        "links": [
+            "fb8cb6f7.942de8",
+            "9e53bfc2.e3329",
+            "35feb884.bd5478",
+            "dcb600d9.bab2d"
+        ],
+        "x": 175,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6c9a8466.812ebc",
+        "type": "comment",
+        "z": "28e94e1a.327fa2",
+        "name": "Mandar dirección IP",
+        "info": "",
+        "x": 100,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "dcb600d9.bab2d",
+        "type": "link in",
+        "z": "c7c81a64.db1438",
+        "name": "",
+        "links": [
+            "21be9a2f.daf7a6",
+            "b9ab70c4.1723c"
+        ],
+        "x": 715,
+        "y": 1000,
+        "wires": [
+            [
+                "cd591370.ae9ec"
+            ]
+        ]
+    },
+    {
+        "id": "cd591370.ae9ec",
+        "type": "exec",
+        "z": "c7c81a64.db1438",
+        "command": "hostname -I",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 830,
+        "y": 1000,
+        "wires": [
+            [
+                "18be0047.35081"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f6c1edce.672b5",
+        "type": "link out",
+        "z": "c7c81a64.db1438",
+        "name": "fromIPTelegram",
+        "links": [
+            "ab026bfd.bfdf78",
+            "41bbf922.e61fd8",
+            "59afa785.3eff28"
+        ],
+        "x": 1095,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "18be0047.35081",
+        "type": "split",
+        "z": "c7c81a64.db1438",
+        "name": "",
+        "splt": "172.",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "key",
+        "x": 990,
+        "y": 980,
+        "wires": [
+            [
+                "59dc236f.ed978c"
+            ]
+        ]
+    },
+    {
+        "id": "59dc236f.ed978c",
+        "type": "switch",
+        "z": "c7c81a64.db1438",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": ":",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 990,
+        "y": 1020,
+        "wires": [
+            [],
+            [
+                "f6c1edce.672b5"
+            ]
+        ]
+    },
+    {
+        "id": "14a8feac.815141",
+        "type": "comment",
+        "z": "c7c81a64.db1438",
+        "name": "IP para Telegram",
+        "info": "",
+        "x": 780,
+        "y": 920,
+        "wires": []
     }
 ]

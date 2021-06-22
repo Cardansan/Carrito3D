@@ -1,1 +1,15 @@
-{"3ad0e292.3924ce":{"token":"${BotToken}"},"8714eca8.27de2":{"user":"inventoteca","password":"Inventoteca2019"},"a11bd592.023a08":{},"ac67a5a.a6fe858":{"token":"${BotToken}"}}
+{
+    "3ad0e292.3924ce": {
+        "token": "${BotToken}"
+    },
+    "8714eca8.27de2": {
+        "user": "inventoteca",
+        "password": "Inventoteca2019"
+    },
+    "a11bd592.023a08": {},
+    "ac67a5a.a6fe858": {
+        "token": "${BotToken}"
+    },
+    "e6aee20a.8c8de": {},
+    "85c748e8.2d1f88": {}
+}
